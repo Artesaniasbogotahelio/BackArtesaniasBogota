@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@neondatabase/serverless": "^0.10.4",
     "@vercel/node": "^3.2.23",
     "@vercel/postgres": "^0.10.0",
     "cors": "^2.8.5",
