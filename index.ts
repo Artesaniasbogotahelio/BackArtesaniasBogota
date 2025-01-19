@@ -7,6 +7,9 @@ import RegistrarGerente from './api/RegistrarGerente';
 import Login from './api/Login';
 import Direccion from './api/Direccion';
 import DireccionEspeficia from './api/DireccionEspecifica';
+import ObtenerAdmins from './api/ObtenerAdmins';
+import EliminarUsuario from './api/EliminarUsuario';
+import ActualizarUsuario from './api/ActualizarUsuario';
 const app = express();
 
 // Middleware para parsear JSON
@@ -67,14 +70,18 @@ app.get('/', (req, res) => {
 app.use(cors(corsOptions));
 
 // Monta cada conjunto de rutas con su prefijo
-
+//Registrar
 app.use('/Registrar', RegistrarUsuarioCliente);
 app.use('/Registrar', RegistrarAdmin);
 app.use('/Registrar', RegistrarGerente);
+//Obtener informacion
 app.use('/Login', Login);
 app.use('/Direccion', Direccion);
-
 app.use('', DireccionEspeficia);
+//control de usuarios 
+app.use('/Usuarios', ObtenerAdmins);
+app.use('/Usuarios', EliminarUsuario);
+app.use('/Usuarios', ActualizarUsuario);
 
 
 // Exportar la aplicación como un handler para Vercel
