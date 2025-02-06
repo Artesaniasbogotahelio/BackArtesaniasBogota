@@ -7,27 +7,22 @@ import RegistrarGerente from './api/RegistrarGerente';
 import Login from './api/Login';
 import Direccion from './api/Direccion';
 import DireccionEspeficia from './api/DireccionEspecifica';
-import ObtenerAdmins from './api/ObtenerAdmins';
+import ObtenerUsuarios from './api/ObtenerUsuarios';
 import EliminarUsuario from './api/EliminarUsuario';
 import ActualizarUsuario from './api/ActualizarUsuario';
+import Inventario from './api/Inventario';
 const app = express();
 
 // Middleware para parsear JSON
 app.use(express.json());
 
 // Configuración de CORS para permitir múltiples orígenes
-const allowedOrigins = ['*'];
+const allowedOrigins = ['https://proyecto-final-patrones.vercel.app/','*'];
 
 const corsOptions = {
-  origin: function (origin, callback) {
-    if (allowedOrigins.includes(origin) || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('No permitido por CORS'));
-    }
-  },
-  methods: 'GET,POST,OPTIONS',
-  allowedHeaders: 'Content-Type',
+  origin: '*',  // Permite cualquier origen
+  methods: 'GET,POST,OPTIONS,PUT,PATCH,DELETE',  // Permite cualquier método HTTP
+  allowedHeaders: '*',  // Permite cualquier encabezado
 };
 
 app.get('/', (req, res) => {
@@ -79,9 +74,10 @@ app.use('/Login', Login);
 app.use('/Direccion', Direccion);
 app.use('', DireccionEspeficia);
 //control de usuarios 
-app.use('/Usuarios', ObtenerAdmins);
+app.use('/Usuarios', ObtenerUsuarios);
 app.use('/Usuarios', EliminarUsuario);
 app.use('/Usuarios', ActualizarUsuario);
+app.use('/Inventario', Inventario);
 
 
 // Exportar la aplicación como un handler para Vercel
