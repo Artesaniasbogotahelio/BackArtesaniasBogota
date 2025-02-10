@@ -11,6 +11,7 @@ import ObtenerUsuarios from './api/ObtenerUsuarios';
 import EliminarUsuario from './api/EliminarUsuario';
 import ActualizarUsuario from './api/ActualizarUsuario';
 import Inventario from './api/Inventario';
+import consultar from './api/consultar';
 const app = express();
 
 // Middleware para parsear JSON
@@ -78,6 +79,7 @@ app.use('/Usuarios', ObtenerUsuarios);
 app.use('/Usuarios', EliminarUsuario);
 app.use('/Usuarios', ActualizarUsuario);
 app.use('/Inventario', Inventario);
+app.use('/consultar', consultar);
 
 
 // Exportar la aplicación como un handler para Vercel
